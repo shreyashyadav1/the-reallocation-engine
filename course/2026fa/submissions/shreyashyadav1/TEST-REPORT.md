@@ -8,7 +8,7 @@ This report records how the prototype was checked. It covers the repository's ow
 - **Doctor:** passes before and after the change.
 - **Verify:** `npm run verify` fails on this Mac **before any change**, because the local Python lacks a YAML library. It passes with that library in a throwaway environment.
 - **PII scan:** it finds one email that already exists upstream in `package-lock.json`. None of the new files triggers it.
-- **Still pending:** the run from a clean checkout of the pushed branch, and the file-change summary, both of which need a commit first.
+- **Clean checkout:** a fresh clone of the pushed branch (commit `1801e9e`) passes everything, with outputs identical to the committed ones (section 7). The PR is https://github.com/nikbearbrown/the-reallocation-engine/pull/39.
 
 What a human still has to judge is listed at the end.
 
@@ -19,7 +19,7 @@ What a human still has to judge is listed at the end.
 
 **Re-run by the student on 2026-10-03** (same working copy, before committing): tests 11/11 pass; both scenarios gave the same output as section 3.
 
-**Still to do:** the run from a clean checkout of the pushed branch.
+The run from a clean checkout of the pushed branch is in section 7 (Claude ran it).
 
 ## 1. Toolchain baseline
 
@@ -146,7 +146,7 @@ exit 1
 What this shows:
 - The only finding is `package-lock.json`: an upstream file, unmodified, in an npm deprecation message. It's the same finding before and after.
 - CI runs this working-tree scan on every PR, so it will flag that line for every student. That isn't something this branch can fix without touching a file outside its namespace.
-- The check that matters for this branch is `node scripts/pii-scan.mjs --diff <base>` over the branch history. **It has to be run after committing**, and its output pasted into the PR.
+- The check that matters for this branch is `node scripts/pii-scan.mjs --diff <base>` over the branch history. It is **clean** on this branch (section 7, and pasted in the PR).
 
 ### Engine commands, run once
 
@@ -259,17 +259,7 @@ $ git status --short data/examples
 
 ## 5. Files changed (namespaced paths only)
 
-Nothing is committed yet. No tracked file is modified (`git status --short | grep -v '^??'` prints nothing). The new files are all under:
-
-```text
-course/2026fa/submissions/shreyashyadav1/
-logs/runs/2026fa-shreyashyadav1-1.md
-recipes/cases/2026fa/shreyashyadav1-healthins-ai-opt.md
-recipes/cases/2026fa/shreyashyadav1-healthins-ai-opt.card.md
-scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/
-```
-
-**To do after committing:** paste `git diff --stat origin/main...HEAD` here and in the PR.
+`git diff --stat` of the build commit against the base, from the fresh clone in section 7: 45 files, all in the namespaced paths, and no maintained file. (A later commit only updates docs in `course/2026fa/submissions/shreyashyadav1/` and `logs/runs/`.)
 
 ## 6. What the gate requires a human to judge
 
@@ -279,3 +269,107 @@ scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/
 - **The scorer's numbers:** know that 0/27 terms are records. The ranking reflects your own inputs and the author's rules, sorted by public records.
 - **E-Verify and STEM eligibility:** ask the employer and the DSO.
 - **Lifecycle status:** the recipe is DRAFT. Promotion is a maintainer's decision.
+
+## 7. Clean checkout of the pushed branch (fresh clone, run by Claude)
+
+```text
+$ git clone --branch contrib/2026fa-shreyashyadav1-healthins-ai-opt https://github.com/shreyashyadav1/the-reallocation-engine.git
+exit 0
+$ git log -1 --format="%h %s"
+1801e9e healthins-ai-opt: insurance/health applied-AI roles under an OPT clock (DRAFT)
+$ npm install
+
+added 55 packages in 1s
+$ npm run doctor
+SUMMARY
+  environment: ✓ runnable
+  recipes: 33/33 carry lifecycle frontmatter — all tracked
+  next: continue
+exit 0
+$ npm run verify   # with PyYAML on PATH, as CI installs it
+conformance: 171 files (88 md · 36 py · 33 js · 10 json · 4 sh)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+✓ manifest check passed (3 warnings)
+exit 0
+$ node scripts/conformance.mjs scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/
+conformance: 11 files (1 md · 7 json · 3 js)
+✓ all conform (machine half of P4). Adequacy is still the human gate.
+exit 0
+$ node --test scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/test/healthins-ai-opt.test.mjs
+ℹ tests 11
+ℹ pass 11
+ℹ fail 0
+$ node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/run.mjs --today 2026-10-03
+healthins-ai-opt · today 2026-10-03 · 9 candidate roles
+  entity matched 8/9 · Form D sample hits 0/8 · blocked 2 · scorer terms that are records 0/27
+  scorer: ✓ scored 7 roles → Apply 3 · Consider 2 · Skip 2 (skip 29%)
+  → Apply 3 · Consider 2 · Skip 2 · BLOCKED 2
+  Apply    0.555  Vouch Inc — Software Engineer, AI Platform  [2h apply]
+  Apply    0.54   Sirona Medical, Inc. — ML Engineer, Clinical NLP  [2h apply]
+  Apply    0.495  Thirty Madison Inc — Full-Stack Engineer, Care Automation  [2h apply]
+  Skip     0      Teladoc Health Inc — Software Engineer II, AI Services  [reallocate]
+  Consider 0.465  Pacific Life Insurance Co — AI Engineer, Underwriting Automation  [3h network]
+  Consider 0.255  Lemonade Inc — LLM Engineer, Claims  [3h network]
+  Skip     0      Augmedix Inc — Senior Software Engineer, Ambient AI  [reallocate]
+  BLOCKED  —      Clarify Health Solutions Inc — Software Engineer, Data Platform  [human-gate]
+  BLOCKED  —      Abridge AI, Inc. — Applied AI Engineer  [human-gate]
+  wrote course/2026fa/submissions/shreyashyadav1/runs/2026-10-03/run-log.json + course/2026fa/submissions/shreyashyadav1/runs/2026-10-03/report.md
+exit 0
+$ node scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/run.mjs --today 2026-10-03 --persona scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/test/fixtures/persona.past-auth.fixture.json --out-dir course/2026fa/submissions/shreyashyadav1/runs/fail-past-auth
+✗ persona dates/limits unusable — timeline gate cannot be computed:
+  - visa.auth_end_date 2025-12-31 is already past (today 2026-10-03) — no timeline can be computed
+  wrote failure log: course/2026fa/submissions/shreyashyadav1/runs/fail-past-auth/run-log.json (no scores were produced)
+exit 2
+$ git status --short   # did the runs change any tracked file?
+(no output = outputs identical to the committed ones)
+$ git diff --stat=200,160 015843d...HEAD
+ course/2026fa/submissions/shreyashyadav1/CHANGE-BRIEF.md                                                          |   74 +++++
+ course/2026fa/submissions/shreyashyadav1/DOMAIN-JUSTIFICATION.md                                                  |   52 ++++
+ course/2026fa/submissions/shreyashyadav1/FRICTIONAL.md                                                            |   96 ++++++
+ course/2026fa/submissions/shreyashyadav1/SOURCES.md                                                               |   59 ++++
+ course/2026fa/submissions/shreyashyadav1/SUBMISSION.md                                                            |   13 +
+ course/2026fa/submissions/shreyashyadav1/TEST-REPORT.md                                                           |  281 +++++++++++++++++
+ course/2026fa/submissions/shreyashyadav1/WORKED-RUN.md                                                            |  393 ++++++++++++++++++++++++
+ course/2026fa/submissions/shreyashyadav1/breaks/default-out/role-scores.json                                      |  109 +++++++
+ course/2026fa/submissions/shreyashyadav1/breaks/default-out/role-scores.md                                        |   12 +
+ course/2026fa/submissions/shreyashyadav1/breaks/no-liveness-out/role-scores.json                                  |   66 ++++
+ course/2026fa/submissions/shreyashyadav1/breaks/no-liveness-out/role-scores.md                                    |   11 +
+ course/2026fa/submissions/shreyashyadav1/breaks/no-liveness-role.json                                             |    4 +
+ course/2026fa/submissions/shreyashyadav1/breaks/profile-out/role-scores.json                                      |  109 +++++++
+ course/2026fa/submissions/shreyashyadav1/breaks/profile-out/role-scores.md                                        |   12 +
+ course/2026fa/submissions/shreyashyadav1/breaks/profile-work-authorized.json                                      |    1 +
+ course/2026fa/submissions/shreyashyadav1/breaks/sponsor-vs-nonsponsor.json                                        |    8 +
+ course/2026fa/submissions/shreyashyadav1/runs/2026-10-03/report.md                                                |  172 +++++++++++
+ course/2026fa/submissions/shreyashyadav1/runs/2026-10-03/role-scores.json                                         |  317 +++++++++++++++++++
+ course/2026fa/submissions/shreyashyadav1/runs/2026-10-03/role-scores.md                                           |   17 ++
+ course/2026fa/submissions/shreyashyadav1/runs/2026-10-03/roles.json                                               |  220 ++++++++++++++
+ course/2026fa/submissions/shreyashyadav1/runs/2026-10-03/run-log.json                                             | 1280 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ course/2026fa/submissions/shreyashyadav1/runs/2027-02-20/report.md                                                |  170 +++++++++++
+ course/2026fa/submissions/shreyashyadav1/runs/2027-02-20/role-scores.json                                         |  317 +++++++++++++++++++
+ course/2026fa/submissions/shreyashyadav1/runs/2027-02-20/role-scores.md                                           |   17 ++
+ course/2026fa/submissions/shreyashyadav1/runs/2027-02-20/roles.json                                               |  220 ++++++++++++++
+ course/2026fa/submissions/shreyashyadav1/runs/2027-02-20/run-log.json                                             | 1257 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ course/2026fa/submissions/shreyashyadav1/runs/fail-past-auth/run-log.json                                         |   11 +
+ course/2026fa/submissions/shreyashyadav1/runs/role-scores.json                                                    |  241 +++++++++++++++
+ course/2026fa/submissions/shreyashyadav1/runs/role-scores.md                                                      |   15 +
+ logs/runs/2026fa-shreyashyadav1-1.md                                                                              |   53 ++++
+ recipes/cases/2026fa/shreyashyadav1-healthins-ai-opt.card.md                                                      |   66 ++++
+ recipes/cases/2026fa/shreyashyadav1-healthins-ai-opt.md                                                           |  196 ++++++++++++
+ scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/README.md                                                  |   71 +++++
+ scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/inputs/candidates.example.json                             |   32 ++
+ scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/inputs/persona.after-ead.example.json                      |   32 ++
+ scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/inputs/persona.example.json                                |   24 ++
+ scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/lib.mjs                                                    |  239 +++++++++++++++
+ scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/run.mjs                                                    |  331 ++++++++++++++++++++
+ scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/test/fixtures/candidates.fixture.json                      |   17 ++
+ scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/test/fixtures/formd/companies-fixture-2026q2-d.sample.json |    2 +
+ scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/test/fixtures/mini-80days.csv                              |    6 +
+ scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/test/fixtures/mini-bls.csv                                 |    2 +
+ scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/test/fixtures/persona.fixture.json                         |    5 +
+ scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/test/fixtures/persona.past-auth.fixture.json               |    3 +
+ scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/test/healthins-ai-opt.test.mjs                             |  149 +++++++++
+ 45 files changed, 6782 insertions(+)
+$ node scripts/pii-scan.mjs --diff 015843d
+pii-scan: clean ✓
+exit 0
+```

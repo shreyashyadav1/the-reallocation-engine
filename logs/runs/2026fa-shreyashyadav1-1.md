@@ -51,3 +51,11 @@ The new insurance/health applied-AI triage tool was run on a fictional student, 
   - Scorer default liveness: 1.0 labeled `record`.
   - Scorer `--profile` "work authorized" text inverts sponsor vs non-sponsor.
 - **Defects logged, not patched (maintained file `scripts/score/role-scorer.mjs`):** both of the above. For a maintainer to decide.
+
+## 2026-10-03 — clean checkout of the pushed branch
+
+- **Inputs:** fresh clone of `contrib/2026fa-shreyashyadav1-healthins-ai-opt` at `1801e9e` from the fork.
+- **Commands:** `npm install`, `npm run doctor`, `npm run verify`, conformance on the prototype folder, the test file, scenario 1, the past-authorization failure case, `git status`, `git diff --stat 015843d...HEAD`, `node scripts/pii-scan.mjs --diff 015843d`.
+- **Result:** all pass. Outputs are identical to the committed ones (`git status` clean after the runs). 45 files changed, all namespaced. History PII scan clean.
+- **PR:** https://github.com/nikbearbrown/the-reallocation-engine/pull/39
+

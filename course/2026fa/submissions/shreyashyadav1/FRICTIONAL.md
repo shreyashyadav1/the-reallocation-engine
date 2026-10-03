@@ -15,7 +15,7 @@ This is the honest log of how the contribution was built: what was tried, what b
 | `lib.mjs`, `run.mjs`, tests, fixtures | Accepted as drafted. I didn't write code myself. | wrote |
 | Recipe, card, CHANGE-BRIEF, justification, worked run, test report, run log | Accepted. I asked for a full check against the assignment, which led to 7 fixes. | drafted |
 | Lifecycle status DRAFT (not RUNNABLE-SAMPLE) | Agree. Keep DRAFT. | proposed, because 6 TODOs are open |
-| Push, PR, Canvas upload | Pending. | not done (waiting for the student's go-ahead) |
+| Push, PR, Canvas upload | I said go. I upload the ZIP to Canvas myself. | forked, pushed, opened the PR, built the ZIP (2026-10-03) |
 | Audit against the assignment text and the fixes in item 13 | asked for it | did it |
 | Re-running the checks | I re-ran the tests and both scenarios, and did one hand check. | ran them first |
 
@@ -79,12 +79,15 @@ Each entry says what was expected, what happened, and the response.
 14. **`ats:liveness` needed a browser build that wasn't installed** (Playwright 1.62.1 wants headless shell 1234).
     **Response:** `npx playwright install --only-shell chromium` (about 95 MB, Playwright's own cache, nothing in the repo). After that, a real Databricks posting checked `active`.
 
-15. **Privacy decision:** the student's résumé was read (from Desktop) only to choose the domain. Nothing from it is in the repo. Tracked files describe "a student in this situation" and never state the author's own visa status, because the data contract counts real immigration details as zero-condition.
+15. **Before the first commit:** the global git identity used a real university email, which would be public in the commit history.
+    **Response:** set a repo-only identity with the GitHub noreply address. The global setting is unchanged.
+
+16. **Privacy decision:** the student's résumé was read (from Desktop) only to choose the domain. Nothing from it is in the repo. Tracked files describe "a student in this situation" and never state the author's own visa status, because the data contract counts real immigration details as zero-condition.
 
 Traceability:
 - outputs in `course/2026fa/submissions/shreyashyadav1/runs/` and `breaks/`;
 - tests in `scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/test/`;
-- commit SHA: ____ (fill after committing);
+- build commit: `1801e9e`; PR: https://github.com/nikbearbrown/the-reallocation-engine/pull/39
 - the session transcript can be exported from the Claude desktop app if asked.
 
 ## 3. My entries (my facts from chat, typed up by Claude)

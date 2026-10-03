@@ -373,6 +373,7 @@ non-sponsor 0.27 Consider
 | **Break 2:** real scorer given a role with no liveness term | Apply; liveness multiplier 1 labeled `record` | (documents why roles are held back) |
 | **Break 3:** real scorer with a "work authorized" profile | Proven sponsor 0.495 Apply → 0.18 Skip; non-sponsor 0.27 ranks above it | (documents why `--profile` isn't passed) |
 | Hand check: the Vouch row, the BLS row, the Form D grep, `ABRIDGED INC` | values match the report | report values trace to the files |
+| Fresh clone of the pushed branch (commit `1801e9e`), run by Claude | doctor ✓, verify ✓, 11 tests pass, sample run identical, `git status` clean after the runs, history PII scan clean | same as the working copy (TEST-REPORT §7) |
 | My hand check: `grep -n "^SIRONA MEDICAL INC," …` | line 24368: 26 approvals, 0 denials, rate 100; titles Senior Software Engineer, Senior NLP Data Scientist, Senior Product Manager | the same values in Sirona's section of report.md |
 
 ### Did not test
@@ -383,7 +384,6 @@ non-sponsor 0.27 Consider
 - Real hiring durations. Every `process_days_estimate` is a guess.
 - Other sectors or states than the four health/insurance industry codes and MA/NY.
 - Node 20 (the CI version) and Windows. Tested on Node 24, macOS.
-- A run from a clean checkout of the pushed branch. Not done yet: nothing is committed.
 
 ### Broke during testing, fixed
 - **Title rule matched "Enterprise Business Operations Manager - AI".** Bare `\bai\b`. AI/ML/NLP now count only next to engineer, developer or scientist. Fixed in `lib.mjs` `TITLE_RULE`; covered by a test.
