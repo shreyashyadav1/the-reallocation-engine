@@ -1,0 +1,32 @@
+{
+  "_note": "FICTIONAL PERSONA — scenario 2: same person on 2027-02-20, OPT started 2027-01-11, still unemployed (40 days used). Every value is your-input.",
+  "persona_id": "kabir-rao-example-after-ead",
+  "name": "Kabir Rao (fictional)",
+  "contact": "kabir.rao@example.com",
+  "degree": "MS Information Systems (STEM-designated program; CIP eligibility to be confirmed with DSO)",
+  "graduation": "2026-12",
+  "target_role": "Applied AI / LLM engineer — agentic workflows, document extraction, RAG",
+  "target_soc": "15-1252",
+  "sector_industries": [
+    "Insurance",
+    "Health Insurance",
+    "Other Health Care",
+    "Hospitals and Physicians"
+  ],
+  "preferred_states": [
+    "MA",
+    "NY"
+  ],
+  "funding_recent_months": 18,
+  "network_list_size": 8,
+  "visa": {
+    "type": "F-1",
+    "status_now": "F-1 post-completion OPT, EAD active, unemployed",
+    "ead_start_date": "2027-01-11",
+    "auth_end_date": null,
+    "unemployment_days_used": 40,
+    "unemployment_ceiling": 90,
+    "buffer_target_days": 30,
+    "stem_extension_planned": true
+  }
+}

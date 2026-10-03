@@ -1,0 +1,5 @@
+{ "_note": "test fixture persona — fictional", "target_soc": "15-1252",
+  "sector_industries": ["Insurance", "Other Health Care"], "preferred_states": ["MA"],
+  "funding_recent_months": 18, "network_list_size": 5,
+  "visa": { "type": "F-1", "ead_start_date": "2027-01-11", "auth_end_date": null,
+            "unemployment_days_used": 0, "unemployment_ceiling": 90, "buffer_target_days": 30, "stem_extension_planned": true } }

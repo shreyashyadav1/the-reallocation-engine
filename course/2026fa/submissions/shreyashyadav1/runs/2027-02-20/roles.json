@@ -1,0 +1,220 @@
+[
+  {
+    "role_id": "vouch-ai-platform",
+    "company": "Vouch Inc",
+    "title": "Software Engineer, AI Platform",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input",
+      "derived_from": {
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "total_approvals": 12,
+        "approval_rate": 100,
+        "titles_matching_rule": [
+          "Software Engineer 2"
+        ]
+      }
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 0.167,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.8,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "sirona-ml-nlp",
+    "company": "Sirona Medical, Inc.",
+    "title": "ML Engineer, Clinical NLP",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input",
+      "derived_from": {
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "total_approvals": 26,
+        "approval_rate": 100,
+        "titles_matching_rule": [
+          "Senior Software Engineer",
+          "Senior NLP Data Scientist"
+        ]
+      }
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.75,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "thirty-madison-fullstack",
+    "company": "Thirty Madison Inc",
+    "title": "Full-Stack Engineer, Care Automation",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input",
+      "derived_from": {
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "total_approvals": 14,
+        "approval_rate": 100,
+        "titles_matching_rule": [
+          "Software Engineer",
+          "Senior Data Engineer"
+        ]
+      }
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.6,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "teladoc-ai-swe",
+    "company": "Teladoc Health Inc",
+    "title": "Software Engineer II, AI Services",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input",
+      "derived_from": {
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "total_approvals": 510,
+        "approval_rate": 96.95817490494296,
+        "titles_matching_rule": [
+          "Sr. Software Engineer",
+          "Sr. Software Engineer, Corp Apps",
+          "Software Engineer III",
+          "Staff Software Engineer"
+        ]
+      }
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.8,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "pacific-life-ai",
+    "company": "Pacific Life Insurance Co",
+    "title": "AI Engineer, Underwriting Automation",
+    "sponsorship": {
+      "p": 0.6,
+      "tier": "Likely",
+      "source": "your-input",
+      "derived_from": {
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "total_approvals": 70,
+        "approval_rate": 100,
+        "titles_matching_rule": []
+      }
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.85,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "lemonade-llm",
+    "company": "Lemonade Inc",
+    "title": "LLM Engineer, Claims",
+    "sponsorship": {
+      "tier": "Unknown",
+      "source": "your-input",
+      "derived_from": {
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "total_approvals": null,
+        "approval_rate": null,
+        "titles_matching_rule": []
+      }
+    },
+    "liveness": {
+      "factor": 1,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.85,
+      "source": "your-input"
+    }
+  },
+  {
+    "role_id": "augmedix-ghost",
+    "company": "Augmedix Inc",
+    "title": "Senior Software Engineer, Ambient AI",
+    "sponsorship": {
+      "p": 0.9,
+      "tier": "Proven",
+      "source": "your-input",
+      "derived_from": {
+        "source": "record",
+        "file": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+        "total_approvals": 18,
+        "approval_rate": 90,
+        "titles_matching_rule": [
+          "Senior Staff DevOps Engineer",
+          "Senior Software Engineer"
+        ]
+      }
+    },
+    "liveness": {
+      "factor": 0,
+      "source": "your-input"
+    },
+    "timeline": {
+      "factor": 0,
+      "source": "your-input"
+    },
+    "fit": {
+      "p": 0.7,
+      "source": "your-input"
+    }
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "_note": "FICTIONAL PERSONA — safe to commit. No real person's data. Every value here is your-input.",
+  "persona_id": "kabir-rao-example",
+  "name": "Kabir Rao (fictional)",
+  "contact": "kabir.rao@example.com",
+  "degree": "MS Information Systems (STEM-designated program; CIP eligibility to be confirmed with DSO)",
+  "graduation": "2026-12",
+  "target_role": "Applied AI / LLM engineer — agentic workflows, document extraction, RAG",
+  "target_soc": "15-1252",
+  "sector_industries": ["Insurance", "Health Insurance", "Other Health Care", "Hospitals and Physicians"],
+  "preferred_states": ["MA", "NY"],
+  "funding_recent_months": 18,
+  "network_list_size": 8,
+  "visa": {
+    "type": "F-1",
+    "status_now": "F-1 student; post-completion OPT applied, not yet approved",
+    "ead_start_date": "2027-01-11",
+    "auth_end_date": null,
+    "unemployment_days_used": 0,
+    "unemployment_ceiling": 90,
+    "buffer_target_days": 30,
+    "stem_extension_planned": true
+  }
+}

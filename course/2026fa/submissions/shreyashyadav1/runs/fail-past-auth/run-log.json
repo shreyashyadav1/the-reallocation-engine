@@ -1,0 +1,11 @@
+{
+  "recipe": "healthins-ai-opt",
+  "status": "failed",
+  "error": "persona dates/limits unusable — timeline gate cannot be computed:\n  - visa.auth_end_date 2025-12-31 is already past (today 2026-10-03) — no timeline can be computed",
+  "persona_file": "scripts/contrib/2026fa/shreyashyadav1-healthins-ai-opt/test/fixtures/persona.past-auth.fixture.json",
+  "today": "2026-10-03",
+  "errors": [
+    "visa.auth_end_date 2025-12-31 is already past (today 2026-10-03) — no timeline can be computed"
+  ],
+  "roles": []
+}

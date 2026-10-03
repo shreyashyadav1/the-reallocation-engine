@@ -1,0 +1,8 @@
+[{ "role_id": "proven-sponsor", "company": "Break test A", "title": "Proven sponsor, fit 0.6",
+   "sponsorship": { "p": 0.9, "tier": "Proven", "source": "record" },
+   "fit": { "p": 0.6, "source": "your-input" },
+   "liveness": { "factor": 1, "source": "record" }, "timeline": { "factor": 1, "source": "your-input" } },
+ { "role_id": "non-sponsor", "company": "Break test B", "title": "Known non-sponsor, fit 0.9",
+   "sponsorship": { "p": 0.0, "tier": "None", "source": "record" },
+   "fit": { "p": 0.9, "source": "your-input" },
+   "liveness": { "factor": 1, "source": "record" }, "timeline": { "factor": 1, "source": "your-input" } }]

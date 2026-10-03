@@ -1,0 +1,4 @@
+[{ "role_id": "no-liveness", "company": "Break test", "title": "posting nobody checked",
+   "sponsorship": { "p": 0.9, "tier": "Proven", "source": "record" },
+   "fit": { "p": 0.8, "source": "your-input" },
+   "timeline": { "factor": 1, "source": "your-input" } }]

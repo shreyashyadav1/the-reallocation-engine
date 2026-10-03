@@ -1,0 +1,17 @@
+{ "roles": [
+  { "role_id": "apply-me", "company": "Fixture Claims AI Inc", "title": "AI Engineer", "fit": 0.8, "process_days_estimate": 30,
+    "liveness": { "status": "active", "checked_on": "2026-10-01", "source": "your-input" } },
+  { "role_id": "too-slow", "company": "Fixture Claims AI Inc", "title": "AI Engineer (slow loop)", "fit": 0.8, "process_days_estimate": 200,
+    "liveness": { "status": "active", "checked_on": "2026-10-01", "source": "your-input" } },
+  { "role_id": "ghost", "company": "Fixture Claims AI Inc", "title": "Closed posting", "fit": 0.9, "process_days_estimate": 30,
+    "liveness": { "status": "closed", "checked_on": "2026-10-01", "source": "your-input" } },
+  { "role_id": "unchecked", "company": "Fixture Claims AI Inc", "title": "Never checked", "fit": 0.9, "process_days_estimate": 30 },
+  { "role_id": "not-in-csv", "company": "Fixture Claims", "title": "Prefix of a real row", "fit": 0.9, "process_days_estimate": 30,
+    "liveness": { "status": "active", "checked_on": "2026-10-01", "source": "your-input" } },
+  { "role_id": "ambiguous", "company": "Acme Health Inc", "title": "Two rows, one name", "fit": 0.9, "process_days_estimate": 30,
+    "liveness": { "status": "active", "checked_on": "2026-10-01", "source": "your-input" } },
+  { "role_id": "medtech-titles", "company": "Fixture Medtech Inc", "title": "ML Engineer", "fit": 0.8, "process_days_estimate": 30,
+    "liveness": { "status": "active", "checked_on": "2026-10-01", "source": "your-input" } },
+  { "role_id": "no-record", "company": "Fixture No Sponsor Inc", "title": "LLM Engineer", "fit": 0.5, "process_days_estimate": 30,
+    "liveness": { "status": "active", "checked_on": "2026-10-01", "source": "your-input" } }
+] }
